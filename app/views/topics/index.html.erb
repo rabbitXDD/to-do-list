@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Simple Todo List </h1>
+
+
+<%=form_tag topics_path,method: "get" do%>
+<%=hidden_field_tag :undo,false%>
+<%= submit_tag "finished things"%>
+<%end%>
+<%=form_tag topics_path, method: "get" do%>
+<%=hidden_field_tag :finish,true%>
+<%= submit_tag "not finished things"%>
+<%end%>
+
+<table>
+  <thead>
+    <tr>
+      <th>Things</th>
+      <th>status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= topic.body %></td>
+        <td>
+          
+          <% if topic.finished == false %>
+          尚未完成
+          <%else%>
+          完成
+          <%end%>
+        </td>
+        <td>
+        <% if topic.finished == false %>
+        <%= button_to "finished", finish_topic_path(topic), method: :post %>
+        <%else%>
+        <%= button_to "Not finished", finish_topic_path(topic), method: :post %>
+        <%end%>
+        </td>
+        <td><%= link_to 'Show', topic %></td>
+        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Todo things', new_topic_path %>
+<%= link_to 'All Things',topics_path %>
