@@ -5,11 +5,11 @@
 
 <%=form_tag topics_path,method: "get" do%>
 <%=hidden_field_tag :undo,false%>
-<%= submit_tag "finished things"%>
+<%= submit_tag "not finished things"%>
 <%end%>
 <%=form_tag topics_path, method: "get" do%>
 <%=hidden_field_tag :finish,true%>
-<%= submit_tag "not finished things"%>
+<%= submit_tag "finished things"%>
 <%end%>
 
 <table>
