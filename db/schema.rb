@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429070215) do
+ActiveRecord::Schema.define(version: 20150429073842) do
 
   create_table "finishes", force: :cascade do |t|
     t.integer  "topic_id"
